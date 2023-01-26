@@ -12,7 +12,7 @@ let fotmobData = JSON.parse(fs.readFileSync(filePath));
 const league = new League(fotmobData);
 
 function runSouthSimulation(iterations) {
-  if (fs.existsSync(`..api/sim/south/${dateString}-LeaguePredictions[${iterations}].json`)) {
+  if (fs.existsSync(`../api/sim/south/${dateString}/LeaguePredictions[${iterations}].json`)) {
     return;
   }
   console.log("Simulating National League South...");
@@ -20,13 +20,13 @@ function runSouthSimulation(iterations) {
   const newPositionTable = league.initialisePositionTable(league.southTable);
   const leagueFixtures = league.filterRemainingFixtures(league.southFixtures);
   const results = simulator.leagueSimulation(newDataTable, leagueFixtures, newPositionTable, iterations, false);
-  fs.writeFileSync(`../api/sim/south/${dateString}-LeaguePredictions[${iterations}].json`, JSON.stringify(results));
-  console.log("created file", `../api/sim/south/${dateString}-LeaguePredictions[${iterations}].json`);
+  fs.writeFileSync(`../api/sim/south/${dateString}/LeaguePredictions[${iterations}].json`, JSON.stringify(results));
+  console.log("created file", `../api/sim/south/${dateString}/LeaguePredictions[${iterations}].json`);
   return 1;
 }
 
 function runNorthSimulation(iterations) {
-  if (fs.existsSync(`../api/sim/north/${dateString}-LeaguePredictions[${iterations}].json`)) {
+  if (fs.existsSync(`../api/sim/north/${dateString}/LeaguePredictions[${iterations}].json`)) {
     return;
   }
   console.log("Simulating National League North...");
@@ -34,8 +34,8 @@ function runNorthSimulation(iterations) {
   const newPositionTable = league.initialisePositionTable(league.northTable);
   const leagueFixtures = league.filterRemainingFixtures(league.northFixtures);
   const results = simulator.leagueSimulation(newDataTable, leagueFixtures, newPositionTable, iterations, false);
-  fs.writeFileSync(`../api/sim/north/${dateString}-LeaguePredictions[${iterations}].json`, JSON.stringify(results));
-  console.log("created file", `../api/sim/north/${dateString}-LeaguePredictions[${iterations}].json`);
+  fs.writeFileSync(`../api/sim/north/${dateString}/LeaguePredictions[${iterations}].json`, JSON.stringify(results));
+  console.log("created file", `../api/sim/north/${dateString}/LeaguePredictions[${iterations}].json`);
   return 1;
 }
 
