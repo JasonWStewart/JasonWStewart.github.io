@@ -1,6 +1,7 @@
 class League {
   constructor(inputData) {
-    this.allFixtures = inputData.pageProps?.matches.data.allMatches ?? inputData.matches.data.allMatches;
+    this.allFixtures =
+      inputData.pageProps?.matches.data.allMatches ?? inputData.matches.allMatches ?? inputData.matches.data.allMatches;
     this.northTable =
       inputData.pageProps?.table[0].data.tables[0].table.all ?? inputData.table[0].data.tables[0].table.all;
     this.southTable =
